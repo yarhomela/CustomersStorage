@@ -1,10 +1,11 @@
 ﻿using CustomerStorage.DataAccessLayer.Entities;
 using CustomerStorage.DataAccessLayer.Repositories.Base;
+using CustomerStorage.DataAccessLayer.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CustomerStorage.DataAccessLayer.Repositories
 {
-    public class CustomerRepository : BaseRepository<Customer>
+    public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
         private readonly ApplicationDbContext _context;
         public CustomerRepository(ApplicationDbContext context) : base(context)
@@ -12,7 +13,7 @@ namespace CustomerStorage.DataAccessLayer.Repositories
             _context = context;
         }
 
-        public async Task<IList<Customer>> GetCustomers()
+        public async Task<IList<Customer>> GetCustomersAsync()
         {
             var customers = await _context.Customers
                 .AsNoTracking()
