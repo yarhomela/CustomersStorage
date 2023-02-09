@@ -5,11 +5,14 @@ namespace CustomerStorage.DataAccessLayer
 {
     public class ApplicationDbContext : DbContext
     {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options) { }
         public DbSet<Customer> Customers { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override async void OnModelCreating(ModelBuilder builder)
         {
-            Database.EnsureCreatedAsync();
+            base.OnModelCreating(builder);
+            await Database.EnsureCreatedAsync();
 
             builder.Entity<Customer>()
                 .HasIndex(u => u.Name)
