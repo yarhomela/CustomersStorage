@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CustomerStorage.BusinessLogicLayer\CustomerStorage.BusinessLogicLayer.csproj" />
+    <ProjectReference Include="..\CustomerStorage.Services\CustomerStorage.Services.csproj" />
   </ItemGroup>
 
 </Project>

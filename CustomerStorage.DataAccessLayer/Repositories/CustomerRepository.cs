@@ -13,7 +13,7 @@ namespace CustomerStorage.DataAccessLayer.Repositories
             _context = context;
         }
 
-        public async Task<IList<Customer>> GetCustomersAsync()
+        public async Task<List<Customer>> GetCustomersAsync()
         {
             var customers = await _context.Customers
                 .AsNoTracking()

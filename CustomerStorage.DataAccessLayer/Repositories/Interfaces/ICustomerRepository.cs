@@ -7,9 +7,10 @@ namespace CustomerStorage.DataAccessLayer.Repositories.Interfaces
         Task CreateAsync(Customer customer);
         Task CreateRangeAsync(List<Customer> customers);
         Task<Customer> ReadByIdAsync(int customerId);
-        Task<IList<Customer>> GetCustomersAsync();
+        Task<List<Customer>> GetCustomersAsync();
         Task UpdateAsync(Customer customer);
         Task UpdateRangeAsync(List<Customer> customers);
+        Task SetIsRemovedAsync(int entityId);
         Task DeleteAsync(int customerId);
     }
 }

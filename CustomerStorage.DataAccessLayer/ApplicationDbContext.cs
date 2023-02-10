@@ -16,7 +16,9 @@ namespace CustomerStorage.DataAccessLayer
 
             builder.Entity<Customer>()
                 .HasIndex(u => u.Name)
-                .IsUnique();
+            .IsUnique();
+
+            builder.Entity<Customer>().HasQueryFilter(e => !e.IsRemoved);
         }
     }
 }
