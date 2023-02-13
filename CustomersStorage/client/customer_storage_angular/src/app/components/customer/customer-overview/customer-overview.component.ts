@@ -15,7 +15,7 @@ export class CustomerOverviewComponent  {
   }
 
   onGet(){
-    debugger
+    // to do
     this.customers = [
       new  CustomerViewModel(1, "name", "companyName", "+380661020300", "generated@email.som"),
       new  CustomerViewModel(2, "Jane", "Wander", "+380661020300", "jane@email.som"),

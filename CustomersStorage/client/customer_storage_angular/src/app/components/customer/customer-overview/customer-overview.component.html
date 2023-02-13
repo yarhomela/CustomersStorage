@@ -1,18 +1,24 @@
 <div>
-    <div>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Company Name</th>
-                <th>Phone</th>
-                <th>Email</th>
-            </tr>
-            <tr *ngFor="let customer of customers">
-                <th>{{customer.name}}</th>
-                <th>{{customer.companyName}}</th> 
-                <th>{{customer.phone}}</th> 
-                <th>{{customer.email}}</th> 
-            </tr>
-        </table>
+    <div class="d-flex justify-content-center">
+        <form>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Company Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                
+                <tr *ngFor="let customer of customers">
+                    <th>{{customer.name}}</th>
+                    <th>{{customer.companyName}}</th>
+                    <th>{{customer.phone}}</th>
+                    <th>{{customer.email}}</th>
+                </tr>
+            </table>
+        </form>
+        
     </div>
 </div>
