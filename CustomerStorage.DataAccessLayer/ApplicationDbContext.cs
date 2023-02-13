@@ -9,10 +9,10 @@ namespace CustomerStorage.DataAccessLayer
             : base(options) { }
         public DbSet<Customer> Customers { get; set; }
 
-        protected override async void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            await Database.EnsureCreatedAsync();
+            //await Database.EnsureCreatedAsync();
 
             builder.Entity<Customer>()
                 .HasIndex(u => u.Name)

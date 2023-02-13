@@ -6,7 +6,7 @@ using CustomerStorage.ViewModels.CustomerModels;
 
 namespace CustomerStorage.Services.Services
 {
-    public class CustomerService : ICustomerInterface
+    public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _customerRepository;
 

@@ -10,8 +10,16 @@ services.AddContext(configuration);
 services.SetRepositoryDependencies();
 services.SetDependencies();
 
+services.AddControllers();
+services.AddMvcCore();
+
 var app = builder.Build();
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "Hello Page!");
+app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 app.Run();
 
 

@@ -2,7 +2,7 @@
 
 namespace CustomerStorage.Services.Services.Interfaces
 {
-    public interface ICustomerInterface
+    public interface ICustomerService
     {
         Task AddAsync(CreateCustomerViewModel model);
         Task<CustomerViewModel> ReadByIdAsync(int customerId);

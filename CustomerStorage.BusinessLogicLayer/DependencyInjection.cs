@@ -8,7 +8,7 @@ namespace CustomerStorage.BusinessLogicLayer
     {
         public static void SetDependencies(this IServiceCollection services)
         {
-            services.AddScoped<ICustomerInterface, CustomerService>();
+            services.AddScoped<ICustomerService, CustomerService>();
         }
     }
 }
