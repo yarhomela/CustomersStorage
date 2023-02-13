@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CustomerStorage.DataAccessLayer\CustomerStorage.DataAccessLayer.csproj" />
+  </ItemGroup>
+
 </Project>

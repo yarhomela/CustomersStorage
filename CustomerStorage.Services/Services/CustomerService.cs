@@ -29,14 +29,14 @@ namespace CustomerStorage.Services.Services
         public async Task<List<CustomerViewModel>> GetListAsync()
         {
             List<Customer> customers = await _customerRepository.GetCustomersAsync();
-            var viewModels = new List<CustomerViewModel>();
+            var customerList = new List<CustomerViewModel>();
 
             foreach(var customer in customers)
             {
                 CustomerViewModel viewModel = customer.MapEntityToViewModel();
-                viewModels.Add(viewModel);
+                customerList.Add(viewModel);
             };
-            return viewModels;
+            return customerList;
 
         }
         public async Task UpdateAsync(UpdateCustomerViewModel model)
@@ -51,6 +51,20 @@ namespace CustomerStorage.Services.Services
         public async Task TrancateAsync(int customerId)
         {
             await _customerRepository.DeleteAsync(customerId);
+        }
+        public async Task<List<CustomerViewModel>> GetByFilter(GetCustomersByFilterRequestModel requestModel)
+        {
+            var requestDto = requestModel.MapModelToRequestDto();
+            var customers = await _customerRepository.GetCustomersByFiler(requestDto);
+
+            var customerList = new List<CustomerViewModel>();
+
+            foreach (var customer in customers)
+            {
+                CustomerViewModel viewModel = customer.MapEntityToViewModel();
+                customerList.Add(viewModel);
+            };
+            return customerList;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using CustomerStorage.DataAccessLayer.Entities;
+﻿using CustomerStorage.DataAccessLayer.DTO;
+using CustomerStorage.DataAccessLayer.Entities;
 using CustomerStorage.ViewModels.CustomerModels;
 
 namespace CustomerStorage.Services.DataMapping
@@ -41,6 +42,19 @@ namespace CustomerStorage.Services.DataMapping
                 Email = customer.Email
             };
             return viewModel;
+        }
+
+        public static CustomersByFilterRequestDTO MapModelToRequestDto(this GetCustomersByFilterRequestModel requestModel)
+        {
+            var requestDto = new CustomersByFilterRequestDTO()
+            {
+                SearchWord = requestModel.SearchWord,
+                SortingBy = requestModel.SortingBy,
+                ByAscending = requestModel.ByAscending,
+                Page = requestModel.Page,
+                PageSize = requestModel.PageSize
+            };
+            return requestDto;
         }
     }
 }

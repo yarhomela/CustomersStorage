@@ -1,4 +1,5 @@
-﻿using CustomerStorage.DataAccessLayer.Entities;
+﻿using CustomerStorage.DataAccessLayer.DTO;
+using CustomerStorage.DataAccessLayer.Entities;
 
 namespace CustomerStorage.DataAccessLayer.Repositories.Interfaces
 {
@@ -12,5 +13,6 @@ namespace CustomerStorage.DataAccessLayer.Repositories.Interfaces
         Task UpdateRangeAsync(List<Customer> customers);
         Task SetIsRemovedAsync(int entityId);
         Task DeleteAsync(int customerId);
+        Task<List<Customer>> GetCustomersByFiler(CustomersByFilterRequestDTO request);
     }
 }
