@@ -3,9 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CustomerOverviewComponent } from './components/customer/customer-overview/customer-overview.component';
 import { CustomerModule } from './components/customer/customer.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CustomerService } from './services/customer.service';
+import { HttpClientModule }   from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,9 +16,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     CustomerModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

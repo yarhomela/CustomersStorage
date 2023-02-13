@@ -13,9 +13,21 @@ services.SetDependencies();
 services.AddControllers();
 services.AddMvcCore();
 
+services.AddCors(config =>
+{
+    config.AddPolicy("policy",
+    builder => builder
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .AllowCredentials()
+    .SetIsOriginAllowed((host) => true)
+    );
+});
+
 var app = builder.Build();
 app.MapGet("/", () => "Hello Page!");
 app.UseRouting();
+app.UseCors("policy");
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();

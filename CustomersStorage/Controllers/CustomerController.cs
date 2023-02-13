@@ -42,7 +42,7 @@ namespace CustomersStorage.Controllers
             return Ok(result);
         }
 
-        [HttpGet("GetByFilter")]
+        [HttpPost("GetByFilter")]
         public async Task<IActionResult> GetByFilter(GetCustomersByFilterRequestModel model)
         {
             if (ModelState.IsValid)
@@ -70,7 +70,7 @@ namespace CustomersStorage.Controllers
             }
         }
 
-        [HttpPost("Remove/{customerId}")]
+        [HttpGet("Remove/{customerId}")]
         public async Task<IActionResult> Remove(int customerId)
         {                
             await _customerService.RemoveAsync(customerId);

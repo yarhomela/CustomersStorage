@@ -1,12 +1,11 @@
-export class CustomerViewModel {
+export class UpdateCustomerViewModel {
     customerId: number;
     name: string;
-    companyName?: string;
-    phone?: string;
-    email?: string;
+    companyName: string;
+    phone: string;
+    email: string;
 
     constructor(customerId: number, name: string, companyName: string, phone: string, email: string) {
-
         this.customerId = customerId,
         this.name = name,
         this.companyName = companyName,
