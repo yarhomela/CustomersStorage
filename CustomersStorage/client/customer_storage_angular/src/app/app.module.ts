@@ -7,10 +7,12 @@ import { CustomerModule } from './components/customer/customer.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerService } from './services/customer.service';
 import { HttpClientModule }   from '@angular/common/http';
+import { AppHeaderComponent } from './app-header/app-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AppHeaderComponent,
     ],
   imports: [
     BrowserModule,
