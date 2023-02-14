@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerService } from './services/customer.service';
 import { HttpClientModule }   from '@angular/common/http';
 import { AppHeaderComponent } from './app-header/app-header.component';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AppHeaderComponent } from './app-header/app-header.component';
     AppRoutingModule,
     CustomerModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]

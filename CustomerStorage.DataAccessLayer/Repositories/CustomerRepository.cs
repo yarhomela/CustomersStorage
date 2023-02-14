@@ -6,6 +6,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Data;
+using System.Reflection.PortableExecutable;
 
 namespace CustomerStorage.DataAccessLayer.Repositories
 {
@@ -30,6 +31,7 @@ namespace CustomerStorage.DataAccessLayer.Repositories
         public async Task<List<Customer>> GetCustomersByFiler(CustomersByFilterRequestDTO request)
         {
             string procedureName = "spSearchSortingPagingCustomers";
+            var resultList = new List<Customer>();
             using (var connection = new SqlConnection(_connectionString))
             {
                 var command = new SqlCommand(procedureName, connection);
@@ -42,9 +44,27 @@ namespace CustomerStorage.DataAccessLayer.Repositories
 
                 await command.Connection.OpenAsync();
 
-                var sqlDataReader = command.ExecuteReader();
-                var resultList = sqlDataReader.Cast<Customer>().ToList();
-                return resultList;
+                var reader = command.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        var customer = new Customer();
+                        customer.Id = int.Parse(reader["Id"].ToString()!);
+                        customer.Name = reader["Name"].ToString()!;
+                        customer.CompanyName = reader["CompanyName"].ToString()!;
+                        customer.Phone = reader["Phone"].ToString()!;
+                        customer.Email = reader["Email"].ToString()!;
+
+                        resultList.Add(customer);
+                    }
+                    return resultList;
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                
             }
 
         }
