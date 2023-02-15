@@ -52,19 +52,20 @@ namespace CustomerStorage.Services.Services
         {
             await _customerRepository.DeleteAsync(customerId);
         }
-        public async Task<List<CustomerViewModel>> GetByFilter(GetCustomersByFilterRequestModel requestModel)
+        public async Task<CustomerSampleViewModel> GetByFilter(GetCustomersByFilterRequestModel requestModel)
         {
             var requestDto = requestModel.MapModelToRequestDto();
-            var customers = await _customerRepository.GetCustomersByFiler(requestDto);
+            var resultDto = await _customerRepository.GetCustomersByFiler(requestDto);
 
-            var customerList = new List<CustomerViewModel>();
+            var responseModel = new CustomerSampleViewModel();
+            responseModel.PagesCount = resultDto.PagesCount;
 
-            foreach (var customer in customers)
+            foreach (var customer in resultDto.Customers)
             {
                 CustomerViewModel viewModel = customer.MapEntityToViewModel();
-                customerList.Add(viewModel);
+                responseModel.Customers.Add(viewModel);
             };
-            return customerList;
+            return responseModel;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace CustomersStorage.Controllers
         [HttpPost("Add")]
         public async Task<IActionResult> Add(CreateCustomerViewModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 await _customerService.AddAsync(model);
                 return Ok();
@@ -45,15 +45,8 @@ namespace CustomersStorage.Controllers
         [HttpPost("GetByFilter")]
         public async Task<IActionResult> GetByFilter(GetCustomersByFilterRequestModel model)
         {
-            if (ModelState.IsValid)
-            {
-                var result = await _customerService.GetByFilter(model);
-                return Ok(result);
-            }
-            else
-            {
-                return BadRequest(ModelState.IsValid);
-            }
+            var result = await _customerService.GetByFilter(model);
+            return Ok(result);
         }
 
         [HttpPost("Edit")]
@@ -72,7 +65,7 @@ namespace CustomersStorage.Controllers
 
         [HttpGet("Remove/{customerId}")]
         public async Task<IActionResult> Remove(int customerId)
-        {                
+        {
             await _customerService.RemoveAsync(customerId);
             return Ok();
         }

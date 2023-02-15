@@ -28,10 +28,10 @@ namespace CustomerStorage.DataAccessLayer.Repositories
             return customers;
         }
 
-        public async Task<List<Customer>> GetCustomersByFiler(CustomersByFilterRequestDTO request)
+        public async Task<CustomerSampleDTO> GetCustomersByFiler(CustomersByFilterRequestDTO request)
         {
             string procedureName = "spSearchSortingPagingCustomers";
-            var resultList = new List<Customer>();
+            var customerModel = new CustomerSampleDTO();
             using (var connection = new SqlConnection(_connectionString))
             {
                 var command = new SqlCommand(procedureName, connection);
@@ -44,27 +44,36 @@ namespace CustomerStorage.DataAccessLayer.Repositories
 
                 await command.Connection.OpenAsync();
 
-                var reader = command.ExecuteReader();
+                var procedureReader = await command.ExecuteReaderAsync();
                 try
                 {
-                    while (reader.Read())
+                    bool isRead;
+                    for (var page = 1; page <= request.PageSize; page++)
                     {
+                        isRead = await procedureReader.ReadAsync();
                         var customer = new Customer();
-                        customer.Id = int.Parse(reader["Id"].ToString()!);
-                        customer.Name = reader["Name"].ToString()!;
-                        customer.CompanyName = reader["CompanyName"].ToString()!;
-                        customer.Phone = reader["Phone"].ToString()!;
-                        customer.Email = reader["Email"].ToString()!;
+                        customer.Id = int.Parse(procedureReader["Id"].ToString()!);
+                        customer.Name = procedureReader["Name"].ToString()!;
+                        customer.CompanyName = procedureReader["CompanyName"].ToString()!;
+                        customer.Phone = procedureReader["Phone"].ToString()!;
+                        customer.Email = procedureReader["Email"].ToString()!;
 
-                        resultList.Add(customer);
+                        customerModel.Customers.Add(customer);
                     }
-                    return resultList;
+
+                    bool isResult = await procedureReader.NextResultAsync();
+                    isRead = await procedureReader.ReadAsync();
+                    if (isResult && isRead)
+                    {
+                        customerModel.PagesCount = procedureReader.GetInt32(0);
+                    }
+                    return customerModel;
                 }
                 catch (Exception ex)
                 {
                     throw;
                 }
-                
+
             }
 
         }

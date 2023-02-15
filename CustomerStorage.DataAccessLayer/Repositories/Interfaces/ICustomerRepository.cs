@@ -13,6 +13,6 @@ namespace CustomerStorage.DataAccessLayer.Repositories.Interfaces
         Task UpdateRangeAsync(List<Customer> customers);
         Task SetIsRemovedAsync(int entityId);
         Task DeleteAsync(int customerId);
-        Task<List<Customer>> GetCustomersByFiler(CustomersByFilterRequestDTO request);
+        Task<CustomerSampleDTO> GetCustomersByFiler(CustomersByFilterRequestDTO request);
     }
 }

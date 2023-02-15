@@ -36,10 +36,10 @@
             <div>
                 <div>
                     <div class="pagination">
-                        <a (click)="onChangePage($event,activePage-1)">&laquo;</a>
-                        <a [ngClass]="activePage == 1 ? 'active' : ''" (click)="onChangePage($event,1)">1</a>
-                        <a *ngFor="let page of pages" (click)="onChangePage($event,page)" [ngClass]="activePage == page ? 'active' : ''">{{page}}</a>
-                        <a (click)="onChangePage($event,activePage+1)">&raquo;</a>
+                        <a (click)="onChangePage(activePage - 1)">&laquo;</a>
+                        <a [ngClass]="activePage == 1 ? 'active' : ''" (click)="onChangePage(1)">1</a>
+                        <a *ngFor="let page of pages" (click)="onChangePage(page)" [ngClass]="activePage == page ? 'active' : ''">{{page}}</a>
+                        <a (click)="onChangePage(activePage+1)">&raquo;</a>
                       </div>
                 </div>
                 <div>

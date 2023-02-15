@@ -10,6 +10,6 @@ namespace CustomerStorage.Services.Services.Interfaces
         Task UpdateAsync(UpdateCustomerViewModel model);
         Task RemoveAsync(int customerId);
         Task TrancateAsync(int customerId);
-        Task<List<CustomerViewModel>> GetByFilter(GetCustomersByFilterRequestModel requestModel);
+        Task<CustomerSampleViewModel> GetByFilter(GetCustomersByFilterRequestModel requestModel);
     }
 }
