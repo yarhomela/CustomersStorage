@@ -4,7 +4,7 @@ import { CustomerOverviewComponent } from './components/customer/customer-overvi
 
 const routes: Routes = [
   { path: 'customer/overview', component: CustomerOverviewComponent },
-  { path: '**', redirectTo: 'customer/overview', pathMatch: 'full' }
+  //{ path: '**', redirectTo: 'customer/overview', pathMatch: 'full' }
 ];
 
 @NgModule({
