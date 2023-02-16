@@ -35,22 +35,6 @@ namespace CustomerStorage.DataAccessLayer.Repositories.Base
             await _context.SaveChangesAsync();
         }
 
-        public async Task SetIsRemovedAsync(int entityId)
-        {
-            Entities.Base.Base baseEntity = new Entities.Base.Base { Id = entityId, IsRemoved = true };
-
-            _context.Attach(baseEntity);
-            _context.Entry(baseEntity).Property(x => x.IsRemoved).IsModified = true;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                throw new DbUpdateConcurrencyException(ex.Message);
-            }
-        }
         public virtual async Task UpdateRangeAsync(List<TEntity> entities)
         {
             _context.UpdateRange(entities);

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CreateCustomerViewModel } from '../models/customer/create-customer-view-model';
@@ -13,14 +13,14 @@ export class CustomerService {
         this.baseUrl = "https://localhost:7240";
     }
 
-    add(model : CreateCustomerViewModel){
+    add(model: CreateCustomerViewModel) {
         let url = this.baseUrl + "/Customer/Add";
         return this.http.post(url, model);
     }
 
-    getById(id : number) : Observable<any> {
+    getById(id: number): Observable<any> {
         let url = this.baseUrl + "/Customer/GetById/" + id;
-        return this.http.get(url).pipe(map((response : any) => { 
+        return this.http.get(url).pipe(map((response: any) => {
             return response;
         }));
     }
@@ -32,19 +32,19 @@ export class CustomerService {
         }));
     }
 
-    getListByFilter(model : GetCustomersByFilterRequestModel): Observable<any[]>{
+    getListByFilter(model: GetCustomersByFilterRequestModel): Observable<any[]> {
         let url = this.baseUrl + "/Customer/GetByFilter";
-        return this.http.post(url, model).pipe(map((response : any) => {
+        return this.http.post(url, model).pipe(map((response: any) => {
             return response;
         }));
     }
 
-    edit(model : UpdateCustomerViewModel){
+    edit(model: UpdateCustomerViewModel) {
         let url = this.baseUrl + "/Customer/Edit";
         return this.http.post(url, model);
     }
 
-    remove(id : number) {
+    remove(id: number) {
         let url = this.baseUrl + "/Customer/Remove/" + id;
         return this.http.get(url);
     }

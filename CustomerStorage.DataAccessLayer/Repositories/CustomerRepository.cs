@@ -80,5 +80,21 @@ namespace CustomerStorage.DataAccessLayer.Repositories
             }
 
         }
+
+        public async Task SetIsRemovedAsync(int entityId)
+        {
+            var customer = new Customer { Id = entityId, IsRemoved = true };
+
+            try
+            {
+                _context.Attach(customer);
+                _context.Entry(customer).Property(x => x.IsRemoved).IsModified = true;
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new DbUpdateConcurrencyException(ex.Message);
+            }
+        }
     }
 }

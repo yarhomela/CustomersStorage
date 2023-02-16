@@ -30,13 +30,13 @@
                         </tr>
                     </thead>
                     
-                    <tr class="table-rows" *ngFor="let customer of customers" (click)="redirect(customer.customerId)">
-                        <th>{{customer.name}}</th>
-                        <th>{{customer.companyName}}</th>
-                        <th>{{customer.phone}}</th>
-                        <th>{{customer.email}}</th>
+                    <tr class="table-rows" *ngFor="let customer of customers" id="table-row-{{customer.customerId}}">
+                        <th (click)="redirect(customer.customerId)">{{customer.name}}</th>
+                        <th (click)="redirect(customer.customerId)">{{customer.companyName}}</th>
+                        <th (click)="redirect(customer.customerId)">{{customer.phone}}</th>
+                        <th (click)="redirect(customer.customerId)">{{customer.email}}</th>
                         <th><img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" height="40" width="40"></th>
-                        <th><img src="https://cdn3.iconfinder.com/data/icons/faticons/32/remove-01-512.png" height="40" width="40"></th>
+                        <th (click)="removeCustomer(customer.customerId)"><img src="https://cdn3.iconfinder.com/data/icons/faticons/32/remove-01-512.png" height="40" width="40"></th>
                     </tr>
                 </table>
             </div>
