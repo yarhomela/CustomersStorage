@@ -5,12 +5,15 @@ import { map } from 'rxjs/operators';
 import { CreateCustomerViewModel } from '../models/customer/create-customer-view-model';
 import { GetCustomersByFilterRequestModel } from '../models/customer/get-customer-by-filter-request-model';
 import { UpdateCustomerViewModel } from '../models/customer/update-customer-view-model';
+import { environment } from 'src/assets/environments/environment';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class CustomerService {
     baseUrl: string;
     constructor(private http: HttpClient) {
-        this.baseUrl = "https://localhost:7240";
+        this.baseUrl = environment.baseUrl;
     }
 
     add(model: CreateCustomerViewModel) {
