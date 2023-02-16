@@ -9,6 +9,7 @@ import { CustomerService } from './services/customer.service';
 import { HttpClientModule }   from '@angular/common/http';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { FormsModule }   from '@angular/forms';
+import { CryptoJsHelper } from './cross-cutting/crypto-js-helper';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { FormsModule }   from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [CustomerService],
+  providers: [CustomerService, CryptoJsHelper],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

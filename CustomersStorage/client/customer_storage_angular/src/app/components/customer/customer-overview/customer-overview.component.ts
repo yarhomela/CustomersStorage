@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerSampleViewModel } from 'src/app/models/customer/customer-sample-view-model';
+import { CryptoJsHelper } from 'src/app/cross-cutting/crypto-js-helper';
 import { CustomerViewModel } from 'src/app/models/customer/customer-view-model';
 import { GetCustomersByFilterRequestModel } from 'src/app/models/customer/get-customer-by-filter-request-model';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -18,7 +18,7 @@ export class CustomerOverviewComponent implements OnInit {
   activePage : number = 1;
   requestModel: GetCustomersByFilterRequestModel = new GetCustomersByFilterRequestModel();
 
-  constructor(private customerService : CustomerService){}
+  constructor(private customerService : CustomerService, private cryptoHelper : CryptoJsHelper){}
 
   ngOnInit() {
     this.getByFilter();
@@ -31,7 +31,20 @@ export class CustomerOverviewComponent implements OnInit {
     this.customerService.getListByFilter(this.requestModel).subscribe((response : any) => {
       this.customers = response.customers; 
       this.pagesCount = response.pagesCount;
+      this.setOnLocalStorage('customerList',response.customers);
     });
+  }
+
+  setOnLocalStorage(itemName : string, item : any){
+    let json = JSON.stringify(item);
+    let cryptoJson = this.cryptoHelper.encrypt(json);
+    localStorage.setItem(itemName, cryptoJson);
+  }
+
+  getFromLocalStorage(itemName : string) : any{
+    let cryptoJson = localStorage.getItem(itemName)!;
+    let json = this.cryptoHelper.decrypt(cryptoJson);
+    return JSON.parse(json);
   }
 
   onChangePage(page : number) {
