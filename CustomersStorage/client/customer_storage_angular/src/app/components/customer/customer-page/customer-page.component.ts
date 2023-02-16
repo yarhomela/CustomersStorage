@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LocalStorageHelper } from 'src/app/cross-cutting/local-storage-helper';
 import { CreateCustomerViewModel } from 'src/app/models/customer/create-customer-view-model';
@@ -20,7 +20,8 @@ export class CustomerPageComponent implements OnInit {
 
     constructor(private customerService : CustomerService, 
         private route: ActivatedRoute,
-        private localStorageHelper : LocalStorageHelper){
+        private localStorageHelper : LocalStorageHelper,
+        private router: Router){
         this.customer = new CustomerViewModel();
         let routeSub = this.route.params.subscribe(params => {
             this.customerId = params['id'];
@@ -55,4 +56,12 @@ export class CustomerPageComponent implements OnInit {
         editModel.email = this.customer.email;
         this.customerService.edit(editModel);
     }
+
+    removeCustomer(customerId: any) {
+        this.customerService.remove(customerId).subscribe(
+          res => {
+            debugger
+            this.router.navigate(['../overview']);
+        });
+      }
 }

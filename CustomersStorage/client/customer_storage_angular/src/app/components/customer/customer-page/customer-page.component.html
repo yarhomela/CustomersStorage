@@ -1,6 +1,13 @@
 <div class="d-flex justify-content-center">
     <div class="inputs d-flex flex-column w-50">
 
+        <div>
+            <div class="d-flex flex-row-reverse">
+                <th class="m-2" (click)="removeCustomer(customer.customerId)"><img src="https://cdn3.iconfinder.com/data/icons/faticons/32/remove-01-512.png" height="40" width="40"></th>
+                <th class="m-2"><img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" height="40" width="40"></th>
+            </div>
+        </div>
+
         <label class="m-2" for="customer-name">Name:</label>
         <input class="m-2" type="text" name="customer-name" [(ngModel)]="customer.name">
 
