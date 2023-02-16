@@ -2,16 +2,16 @@
     <div class="inputs d-flex flex-column w-50">
 
         <label class="m-2" for="customer-name">Name:</label>
-        <input class="m-2" type="text" name="customer-name">
+        <input class="m-2" type="text" name="customer-name" [(ngModel)]="customer.name">
 
         <label class="m-2" for="company-name">Company Name:</label>
-        <input class="m-2" type="text" name="company-name">
+        <input class="m-2" type="text" name="company-name" [(ngModel)]="customer.companyName">
 
         <label class="m-2" for="phone">Phone:</label>
-        <input class="m-2" type="text" name="phone">
+        <input class="m-2" type="text" name="phone" [(ngModel)]="customer.phone">
 
         <label class="m-2" for="email">Email:</label>
-        <input class="m-2" type="email" name="email">
+        <input class="m-2" type="email" name="email" [(ngModel)]="customer.email">
 
         <div class="d-flex justify-content-center">
             <button class="apply-btn m-2" type="button" name="apply-btn">Apply</button>

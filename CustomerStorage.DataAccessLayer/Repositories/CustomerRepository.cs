@@ -51,14 +51,17 @@ namespace CustomerStorage.DataAccessLayer.Repositories
                     for (var page = 1; page <= request.PageSize; page++)
                     {
                         isRead = await procedureReader.ReadAsync();
-                        var customer = new Customer();
-                        customer.Id = int.Parse(procedureReader["Id"].ToString()!);
-                        customer.Name = procedureReader["Name"].ToString()!;
-                        customer.CompanyName = procedureReader["CompanyName"].ToString()!;
-                        customer.Phone = procedureReader["Phone"].ToString()!;
-                        customer.Email = procedureReader["Email"].ToString()!;
+                        if (isRead)
+                        {
+                            var customer = new Customer();
+                            customer.Id = int.Parse(procedureReader["Id"].ToString()!);
+                            customer.Name = procedureReader["Name"].ToString()!;
+                            customer.CompanyName = procedureReader["CompanyName"].ToString()!;
+                            customer.Phone = procedureReader["Phone"].ToString()!;
+                            customer.Email = procedureReader["Email"].ToString()!;
 
-                        customerModel.Customers.Add(customer);
+                            customerModel.Customers.Add(customer);
+                        }
                     }
 
                     bool isResult = await procedureReader.NextResultAsync();

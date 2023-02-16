@@ -4,9 +4,9 @@ import { CustomerOverviewComponent } from './components/customer/customer-overvi
 import { CustomerPageComponent } from './components/customer/customer-page/customer-page.component';
 
 const routes: Routes = [
-  { path: 'customer/overview', component: CustomerOverviewComponent },
-  { path: 'customer/page', component: CustomerPageComponent },
-  { path: 'customer/page/:id', component: CustomerPageComponent}
+  { path: 'overview', component: CustomerOverviewComponent },
+  { path: 'page', component: CustomerPageComponent },
+  { path: 'page/:id', component: CustomerPageComponent}
   
 ];
 
