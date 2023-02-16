@@ -2,9 +2,12 @@
     <div class="inputs d-flex flex-column w-50">
 
         <div>
-            <div class="d-flex flex-row-reverse">
-                <th class="m-2" (click)="removeCustomer(customer.customerId)"><img src="https://cdn3.iconfinder.com/data/icons/faticons/32/remove-01-512.png" height="40" width="40"></th>
-                <th class="m-2"><img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" height="40" width="40"></th>
+            <div class="d-flex justify-content-between">
+                <img class="m-2" (click)="redirect()" src="/assets/images/return-icon.svg" alt="return-icon">
+                <div>
+                    <img class="m-2" src="/assets/images/edit-icon.svg" alt="edit-icon">
+                    <img class="m-2" (click)="removeCustomer(customer.customerId)" src="/assets/images/blue-delete-icon.svg" alt="remove-icon">
+                </div>
             </div>
         </div>
 
@@ -21,7 +24,7 @@
         <input class="m-2" type="email" name="email" [(ngModel)]="customer.email">
 
         <div class="d-flex justify-content-center">
-            <button class="apply-btn m-2" type="button" name="apply-btn">Apply</button>
+            <button class="apply-btn m-2" type="button" name="apply-btn" (click)="editCustomer()">Update</button>
         </div>
 
     </div>

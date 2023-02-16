@@ -9,7 +9,7 @@
                     
                 </div>
                 <div>
-                    <button class="apply-btn m-2" type="button" name="apply-btn" (click)="getByFilter()">Apply</button>
+                    <button class="apply-btn m-2" type="button" name="apply-btn" (click)="getByFilter()">Update</button>
                 </div>
                 <div class="search-block d-flex align-items-center">
                     <label class="m-2" for="page-search">Search</label>
@@ -35,8 +35,10 @@
                         <th (click)="redirect(customer.customerId)">{{customer.companyName}}</th>
                         <th (click)="redirect(customer.customerId)">{{customer.phone}}</th>
                         <th (click)="redirect(customer.customerId)">{{customer.email}}</th>
-                        <th><img src="https://icons.veryicon.com/png/o/miscellaneous/linear-small-icon/edit-246.png" height="40" width="40"></th>
-                        <th (click)="removeCustomer(customer.customerId)"><img src="https://cdn3.iconfinder.com/data/icons/faticons/32/remove-01-512.png" height="40" width="40"></th>
+                        <th><img src="/assets/images/edit-icon.svg" alt="edit-icon"></th>
+                        <th (click)="removeCustomer(customer.customerId)">
+                            <img src="/assets/images/blue-delete-icon.svg" alt="remove-icon">
+                        </th>
                     </tr>
                 </table>
             </div>

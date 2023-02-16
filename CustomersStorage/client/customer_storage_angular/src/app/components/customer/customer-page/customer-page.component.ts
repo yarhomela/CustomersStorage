@@ -18,6 +18,14 @@ export class CustomerPageComponent implements OnInit {
     customer: CustomerViewModel;
     customerId: number = 0;
 
+    // const user: User = {
+    //     name: string;
+    // }
+    // const user = {
+    //     name: string;
+    //     password: string;
+    // } as CustomerViewModel
+
     constructor(private customerService : CustomerService, 
         private route: ActivatedRoute,
         private localStorageHelper : LocalStorageHelper,
@@ -54,7 +62,7 @@ export class CustomerPageComponent implements OnInit {
         editModel.companyName = this.customer.companyName;
         editModel.phone = this.customer.phone;
         editModel.email = this.customer.email;
-        this.customerService.edit(editModel);
+        this.customerService.edit(editModel).subscribe();
     }
 
     removeCustomer(customerId: any) {
@@ -63,5 +71,9 @@ export class CustomerPageComponent implements OnInit {
             debugger
             this.router.navigate(['../overview']);
         });
+      }
+
+      redirect() {
+        this.router.navigate(['../overview']);
       }
 }

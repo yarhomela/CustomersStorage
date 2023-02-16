@@ -21,25 +21,19 @@ export class CustomerOverviewComponent implements OnInit {
   activePage: number = 1;
   requestModel: GetCustomersByFilterRequestModel = new GetCustomersByFilterRequestModel();
 
-  constructor(private customerService: CustomerService, 
-    private localStorageHelper: LocalStorageHelper, 
+  constructor(private customerService: CustomerService,
+    private localStorageHelper: LocalStorageHelper,
     private router: Router,
     @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() {
-    let storedData = this.localStorageHelper.getFromLocalStorage(this.customerListName);
-    let isNeedRefresh = storedData == null;
-
-    if (!isNeedRefresh) {
-      this.customers = storedData;
+    //let storedData = this.localStorageHelper.getFromLocalStorage(this.customerListName);
+    //let isNeedRefresh = storedData == null;
+    this.getByFilter();
+    for (let i = 2; i <= this.pagesCount; i++) {
+      this.pages.push(i);
     }
-    if (isNeedRefresh) {
-      this.getByFilter();
-      for (let i = 2; i <= this.pagesCount; i++) {
-        this.pages.push(i);
-      }
 
-    }
   }
 
   getByFilter() {
@@ -56,7 +50,7 @@ export class CustomerOverviewComponent implements OnInit {
         let elementId = "table-row-" + customerId;
         document.getElementById(elementId)?.remove();
         this.getByFilter();
-    });
+      });
   }
 
   onChangePage(page: number) {
@@ -67,5 +61,4 @@ export class CustomerOverviewComponent implements OnInit {
   redirect(customerId: any) {
     this.router.navigate(['/page/' + customerId]);
   }
-
 }
