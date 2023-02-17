@@ -1,3 +1,4 @@
+using CustomersStorage.Middlewares;
 using CustomerStorage.BusinessLogicLayer;
 using CustomerStorage.Services.DependencyInjection;
 
@@ -25,7 +26,9 @@ services.AddCors(config =>
 });
 
 var app = builder.Build();
-app.MapGet("/", () => "Hello Page!");
+app.UseExceptionHandler("/Home/Error");
+app.UseStaticFiles();
+app.UseHttpStatusCodeExceptionMiddleware();
 app.UseRouting();
 app.UseCors("policy");
 app.UseEndpoints(endpoints =>

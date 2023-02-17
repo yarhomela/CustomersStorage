@@ -67,7 +67,10 @@ export class CustomerPageComponent implements OnInit {
         editModel.companyName = this.customer.companyName;
         editModel.phone = this.customer.phone;
         editModel.email = this.customer.email;
-        this.customerService.edit(editModel).subscribe();
+        this.customerService.edit(editModel).subscribe(
+          res => {
+            this.router.navigate(['../overview']);
+        });
     }
 
     removeCustomer(customerId: any) {

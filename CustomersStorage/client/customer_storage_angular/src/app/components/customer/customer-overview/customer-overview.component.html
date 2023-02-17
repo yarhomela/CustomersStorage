@@ -9,7 +9,7 @@
                     
                 </div>
                 <div>
-                    <button class="apply-btn m-2" type="button" name="apply-btn" (click)="getByFilter()">Confirm</button>
+                    <button class="apply-btn m-2" type="button" name="apply-btn" (click)="getByFilter()">Apply</button>
                 </div>
                 <div class="search-block d-flex align-items-center">
                     <label class="m-2" for="page-search">Search</label>
@@ -35,7 +35,7 @@
                         <th (click)="redirect(customer.customerId)">{{customer.companyName}}</th>
                         <th (click)="redirect(customer.customerId)">{{customer.phone}}</th>
                         <th (click)="redirect(customer.customerId)">{{customer.email}}</th>
-                        <th><img src="/assets/images/edit-icon.svg" alt="edit-icon"></th>
+                        <th (click)="redirect(customer.customerId)"><img src="/assets/images/edit-icon.svg" alt="edit-icon"></th>
                         <th (click)="removeCustomer(customer.customerId)">
                             <img src="/assets/images/blue-delete-icon.svg" alt="remove-icon">
                         </th>

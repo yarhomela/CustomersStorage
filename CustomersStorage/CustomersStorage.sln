@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerStorage.BusinessLog
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerStorage.Services", "..\CustomerStorage.Services\CustomerStorage.Services.csproj", "{C282BBB5-1063-4ABE-84E8-7C9D1C565178}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerStorage.ViewModels", "..\CustomerStorage.ViewModels\CustomerStorage.ViewModels.csproj", "{4FFDB93D-512A-4ABB-A5BE-FB568BF303F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerStorage.ViewModels", "..\CustomerStorage.ViewModels\CustomerStorage.ViewModels.csproj", "{4FFDB93D-512A-4ABB-A5BE-FB568BF303F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersStorage.CrossCutting", "..\CustomersStorage.CrossCutting\CustomersStorage.CrossCutting.csproj", "{31D13C6F-86BF-4701-92F1-0C2D79F0EC54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{4FFDB93D-512A-4ABB-A5BE-FB568BF303F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FFDB93D-512A-4ABB-A5BE-FB568BF303F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FFDB93D-512A-4ABB-A5BE-FB568BF303F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31D13C6F-86BF-4701-92F1-0C2D79F0EC54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31D13C6F-86BF-4701-92F1-0C2D79F0EC54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31D13C6F-86BF-4701-92F1-0C2D79F0EC54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31D13C6F-86BF-4701-92F1-0C2D79F0EC54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
