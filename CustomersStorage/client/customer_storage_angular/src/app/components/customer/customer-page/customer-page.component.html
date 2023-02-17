@@ -6,11 +6,12 @@
                     <img class="m-2" (click)="redirect()" src="/assets/images/return-icon.svg" alt="return-icon">
                     <div *ngIf="isOpenForUpdate">
                         <img class="m-2" src="/assets/images/edit-icon.svg" alt="edit-icon">
-                        <img class="m-2" (click)="removeCustomer(customerModel.customerId)" src="/assets/images/blue-delete-icon.svg" alt="remove-icon">
+                        <img class="m-2" (click)="removeCustomer(customerModel.customerId)"
+                            src="/assets/images/blue-delete-icon.svg" alt="remove-icon">
                     </div>
                 </div>
             </div>
-    
+
             <div class="inputs d-flex flex-column">
                 <label class="m-2" for="customer-name">Name:</label>
                 <input class="m-2" type="text" name="name" [(ngModel)]="customerModel.name" #name="ngModel" required>
@@ -22,15 +23,16 @@
                         <span>Please, enter a value</span>
                     </div>
                 </div>
-        
+
                 <label class="m-2" for="company-name">Company Name:</label>
-                <input class="m-2" type="text" name="company" [(ngModel)]="customerModel.companyName" #company="ngModel" required>
+                <input class="m-2" type="text" name="company" [(ngModel)]="customerModel.companyName" #company="ngModel"
+                    required>
                 <div *ngIf="company?.dirty" class="validation">
                     <div *ngIf="customerModel.companyName == ''">
                         <span>Please, enter a value</span>
                     </div>
                 </div>
-        
+
                 <label class="m-2" for="phone">Phone:</label>
                 <input class="m-2" type="text" name="phone" [(ngModel)]="customerModel.phone" required
                     pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$" #phone="ngModel">
@@ -42,9 +44,9 @@
                         <span>Required</span>
                     </div>
                 </div>
-        
+
                 <label class="m-2" for="email">Email:</label>
-                <input class="m-2" type="text" name="email" [(ngModel)]="customerModel.email" 
+                <input class="m-2" type="text" name="email" [(ngModel)]="customerModel.email"
                     pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required #email="ngModel">
                 <div class="validation" *ngIf="email?.invalid && email?.dirty">
                     <div>
@@ -52,11 +54,13 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="d-flex justify-content-center">
-                <button *ngIf="!isOpenForUpdate" [disabled]="customerForm.form.invalid || allNames.indexOf(customerModel.name)! > -1" 
+                <button *ngIf="!isOpenForUpdate"
+                    [disabled]="customerForm.form.invalid || allNames.indexOf(customerModel.name)! > -1"
                     class="apply-btn m-2" type="button" (click)="addCustomer()">Add</button>
-                <button *ngIf="isOpenForUpdate" [disabled]="customerForm.form.invalid || allNames.indexOf(customerModel.name)! > -1" 
+                <button *ngIf="isOpenForUpdate"
+                    [disabled]="customerForm.form.invalid || allNames.indexOf(customerModel.name)! > -1"
                     class="apply-btn m-2" type="submit" (click)="editCustomer()">Update</button>
             </div>
 

@@ -2,7 +2,7 @@
 
 namespace CustomerStorage.ViewModels.CustomerModels
 {
-    public class GetCustomersByFilterRequestModel
+    public class CustomersSampleRequestModel
     {
         public string SearchWord { get; set; }
         public CustomerOrderSettingsEnum SortingBy { get; set; }
@@ -10,7 +10,7 @@ namespace CustomerStorage.ViewModels.CustomerModels
         public int Page { get; set; }
         public int PageSize { get; set; }
 
-        public GetCustomersByFilterRequestModel()
+        public CustomersSampleRequestModel()
         {
             SearchWord = String.Empty;
             SortingBy = CustomerOrderSettingsEnum.Name;

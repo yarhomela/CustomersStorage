@@ -1,8 +1,5 @@
 ﻿using CustomerStorage.DataAccessLayer.Entities;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using System.Reflection.Emit;
-using System;
 
 namespace CustomerStorage.DataAccessLayer
 {

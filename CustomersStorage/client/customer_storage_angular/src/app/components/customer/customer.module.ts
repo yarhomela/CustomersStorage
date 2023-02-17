@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CustomerPageComponent } from './customer-page/customer-page.component';
 
 @NgModule({
-  declarations: [CustomerOverviewComponent,CustomerPageComponent],
+  declarations: [CustomerOverviewComponent, CustomerPageComponent],
   imports: [
     CommonModule,
     FormsModule

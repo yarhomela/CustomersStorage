@@ -2,12 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ICreateCustomerViewModel } from '../models/customer/create-customer-view-model';
-import { IGetCustomersByFilterRequestModel } from '../models/customer/get-customer-by-filter-request-model';
-import { IUpdateCustomerViewModel } from '../models/customer/update-customer-view-model';
+import { CustomerCreateModel } from '../models/customer/customer-create-model';
+import { CustomersSampleRequestModel } from '../models/customer/customers-sample-request-model';
+import { CustomerUpdateModel } from '../models/customer/customer-update-model';
 import { environment } from 'src/assets/environments/environment';
-import { ICustomerViewModel } from '../models/customer/customer-view-model';
-import { ICustomerSampleViewModel } from '../models/customer/customer-sample-view-model';
+import { CustomersSampleResponseModel } from '../models/customer/customers-sample-response-model';
 
 @Injectable({
     providedIn: 'root',
@@ -18,19 +17,19 @@ export class CustomerService {
         this.baseUrl = environment.baseUrl;
     }
 
-    add(model: ICreateCustomerViewModel): Observable<any> {
+    add(model: CustomerCreateModel): Observable<any> {
         let url = this.baseUrl + "/Customer/Add";
         return this.http.post(url, model);
     }
 
-    getListByFilter(model: IGetCustomersByFilterRequestModel): Observable<ICustomerSampleViewModel> {
+    getListByFilter(model: CustomersSampleRequestModel): Observable<CustomersSampleResponseModel> {
         let url = this.baseUrl + "/Customer/GetByFilter";
         return this.http.post(url, model).pipe(map((item: any) => {
             return item;
         }));
     }
 
-    edit(model: IUpdateCustomerViewModel): Observable<any> {
+    edit(model: CustomerUpdateModel): Observable<any> {
         let url = this.baseUrl + "/Customer/Edit";
         return this.http.post(url, model);
     }
@@ -40,7 +39,7 @@ export class CustomerService {
         return this.http.get(url);
     }
 
-    getAllNames(): Observable<string[]>{
+    getAllNames(): Observable<string[]> {
         let url = this.baseUrl + "/Customer/GetAllNames";
         return this.http.get(url).pipe(map((item: any) => {
             return item;

@@ -1,4 +1,4 @@
-.customers-table{
+.customers-table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
@@ -9,7 +9,8 @@
   color: black;
   border: 2px solid #4b82ff;
 }
-.search-block input{
+
+.search-block input {
   border: 2px solid #4b82ff;
 }
 
@@ -17,32 +18,38 @@ button:hover {
   background-color: #c1e6ff;
 }
 
-.top-block{
+.top-block {
   font-size: 18px;
   font-family: 'Montserrat';
 }
 
-.customers-table td, .customers-table th {
+.customers-table td,
+.customers-table th {
   border: 1px solid #858585;
   padding: 8px;
 }
 
-.customers-table tr:nth-child(even){background-color: #f2f2f2;}
+.customers-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-.customers-table thead{
+.customers-table thead {
   color: #4b82ff;
   font-size: larger;
-  img{
+
+  img {
     width: 30px;
     height: 30px;
   }
 }
 
-.active img{
+.active img {
   border: 3px solid #4b82ff;
 }
 
-.customers-table .table-rows:hover {background-color: #c1e6ff;}
+.customers-table .table-rows:hover {
+  background-color: #c1e6ff;
+}
 
 .customers th {
   padding-top: 12px;
@@ -53,39 +60,46 @@ button:hover {
 }
 
 .pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination label {
+  font-size: 18px;
+  font-family: 'Montserrat';
+  float: left;
+  padding: 8px 16px;
+}
+
+table {
+  width: 920px;
+  min-width: 940px;
+
+  .column-img {
+    width: 50px;
   }
 
-  .pagination label {
-    font-size: 18px;
-    font-family: 'Montserrat';
-    float: left;
-    padding: 8px 16px;
-  }
-  table{
-    width: 920px;
-    min-width: 940px;
-    .column-img{
-      width: 50px;
-    }
+}
 
-  }
+.column-name {
+  width: 160px !important;
+}
 
-  .column-name{
-    width: 160px !important;
-  }
-  .column-company{
-    width: 220px !important;
-  }
-  .column-phone{
-    width: 140px !important;
-  }
-  .column-email{
-    width: 300px !important;
-  }
-  
-  .pagination a:hover:not(.active) {background-color: #ddd;}
+.column-company {
+  width: 220px !important;
+}
+
+.column-phone {
+  width: 140px !important;
+}
+
+.column-email {
+  width: 300px !important;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}

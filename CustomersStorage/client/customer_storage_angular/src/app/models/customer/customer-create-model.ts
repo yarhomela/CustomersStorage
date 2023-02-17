@@ -1,5 +1,4 @@
-export interface IUpdateCustomerViewModel {
-    customerId: number;
+export interface CustomerCreateModel {
     name: string;
     companyName: string;
     phone: string;

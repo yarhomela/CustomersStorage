@@ -4,13 +4,13 @@ namespace CustomerStorage.Services.Services.Interfaces
 {
     public interface ICustomerService
     {
-        Task AddAsync(CreateCustomerViewModel model);
+        Task AddAsync(CustomerCreateModel model);
         Task<CustomerViewModel> ReadByIdAsync(int customerId);
         Task<List<CustomerViewModel>> GetListAsync();
-        Task UpdateAsync(UpdateCustomerViewModel model);
+        Task UpdateAsync(CustomerUpdateModel model);
         Task RemoveAsync(int customerId);
         Task TrancateAsync(int customerId);
-        Task<CustomerSampleViewModel> GetByFilter(GetCustomersByFilterRequestModel requestModel);
+        Task<CustomersSampleResponseModel> GetByFilter(CustomersSampleRequestModel requestModel);
         Task<List<string>> GetAllCustomersNames();
     }
 }

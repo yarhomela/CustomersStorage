@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LocalStorageHelper } from 'src/app/cross-cutting/local-storage-helper';
-import { customerModel, customersListName } from 'src/app/models/constants';
 
-import { ICustomerViewModel } from 'src/app/models/customer/customer-view-model';
-import { IUpdateCustomerViewModel } from 'src/app/models/customer/update-customer-view-model';
+import { LocalStorageHelper } from 'src/app/cross-cutting/local-storage-helper';
 import { CustomerService } from 'src/app/services/customer.service';
+
+import { CustomerViewModel } from 'src/app/models/customer/customer-view-model';
+import { CustomerUpdateModel } from 'src/app/models/customer/customer-update-model';
+
+import { customerModel, customersListName } from 'src/app/models/constants';
 
 @Component({
   selector: 'app-customer-page',
@@ -16,7 +17,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 
 export class CustomerPageComponent implements OnInit {
-  customerModel: ICustomerViewModel;
+  customerModel: CustomerViewModel;
   isOpenForUpdate: boolean = false;
   allNames: string[] = [];
 
@@ -32,7 +33,7 @@ export class CustomerPageComponent implements OnInit {
     this.isOpenForUpdate = this.customerModel.customerId > 0;
 
     if (this.isOpenForUpdate) {
-      let customerList = this.localStorageHelper.getFromLocalStorage(customersListName) as ICustomerViewModel[];
+      let customerList = this.localStorageHelper.getFromLocalStorage(customersListName) as CustomerViewModel[];
       let customer = customerList.find(f => f.customerId == this.customerModel.customerId);
       this.customerModel = customer!;
     }
@@ -64,7 +65,7 @@ export class CustomerPageComponent implements OnInit {
       companyName: this.customerModel.companyName,
       phone: this.customerModel.phone,
       email: this.customerModel.email
-    } as IUpdateCustomerViewModel;
+    } as CustomerUpdateModel;
 
     this.customerService.edit(updateModel).subscribe(
       res => {

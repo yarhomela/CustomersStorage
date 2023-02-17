@@ -6,9 +6,9 @@ import { CustomerPageComponent } from './components/customer/customer-page/custo
 const routes: Routes = [
   { path: 'overview', component: CustomerOverviewComponent },
   { path: 'page', component: CustomerPageComponent },
-  { path: 'page/:id', component: CustomerPageComponent},
+  { path: 'page/:id', component: CustomerPageComponent },
   { path: '**', redirectTo: 'overview', pathMatch: 'full' }
-  
+
 ];
 
 @NgModule({

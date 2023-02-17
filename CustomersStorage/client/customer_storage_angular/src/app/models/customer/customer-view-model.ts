@@ -1,4 +1,4 @@
-export interface ICustomerViewModel {
+export interface CustomerViewModel {
     customerId: number;
     name: string;
     companyName: string;

@@ -4,9 +4,10 @@
             <div class="top-block d-flex justify-content-between">
                 <div class="page-size-block">
                     <label class="m-2" for="page-size">Page size</label>
-                    <input class="m-2" type="range" name="page-size" min="1" value="10" max="50" oninput="this.nextElementSibling.value = this.value" [(ngModel)]="requestModel.pageSize">
+                    <input class="m-2" type="range" name="page-size" min="1" value="10" max="50"
+                        oninput="this.nextElementSibling.value = this.value" [(ngModel)]="requestModel.pageSize">
                     <output>10</output>
-                    
+
                 </div>
                 <div>
                     <button class="apply-btn m-2" type="button" name="apply-btn" (click)="getByFilter()">Apply</button>
@@ -23,35 +24,47 @@
                         <tr class="text-righ">
                             <th [ngClass]="requestModel.sortingBy == 2 ? 'active' : ''" scope="col" class="column-name">
                                 Name
-                                <img *ngIf="requestModel.byAscending" (click)="onChangeSorting(2)" src="/assets/images/sorting-a-z-icon.png">
-                                <img *ngIf="!requestModel.byAscending" (click)="onChangeSorting(2)" src="/assets/images/sorting-z-a-icon.svg">
+                                <img *ngIf="requestModel.byAscending" (click)="onChangeSorting(2)"
+                                    src="/assets/images/sorting-a-z-icon.png">
+                                <img *ngIf="!requestModel.byAscending" (click)="onChangeSorting(2)"
+                                    src="/assets/images/sorting-z-a-icon.svg">
                             </th>
-                            <th [ngClass]="requestModel.sortingBy == 3 ? 'active' : ''" scope="col" class="column-company">
+                            <th [ngClass]="requestModel.sortingBy == 3 ? 'active' : ''" scope="col"
+                                class="column-company">
                                 Company Name
-                                <img *ngIf="requestModel.byAscending" (click)="onChangeSorting(3)" src="/assets/images/sorting-a-z-icon.png">
-                                <img *ngIf="!requestModel.byAscending" (click)="onChangeSorting(3)" src="/assets/images/sorting-z-a-icon.svg">
+                                <img *ngIf="requestModel.byAscending" (click)="onChangeSorting(3)"
+                                    src="/assets/images/sorting-a-z-icon.png">
+                                <img *ngIf="!requestModel.byAscending" (click)="onChangeSorting(3)"
+                                    src="/assets/images/sorting-z-a-icon.svg">
                             </th>
-                            <th [ngClass]="requestModel.sortingBy == 4 ? 'active' : ''" scope="col" class="column-phone">
+                            <th [ngClass]="requestModel.sortingBy == 4 ? 'active' : ''" scope="col"
+                                class="column-phone">
                                 Phone
-                                <img *ngIf="requestModel.byAscending" (click)="onChangeSorting(4)" src="/assets/images/sorting-a-z-icon.png">
-                                <img *ngIf="!requestModel.byAscending" (click)="onChangeSorting(4)" src="/assets/images/sorting-z-a-icon.svg">
+                                <img *ngIf="requestModel.byAscending" (click)="onChangeSorting(4)"
+                                    src="/assets/images/sorting-a-z-icon.png">
+                                <img *ngIf="!requestModel.byAscending" (click)="onChangeSorting(4)"
+                                    src="/assets/images/sorting-z-a-icon.svg">
                             </th>
-                            <th [ngClass]="requestModel.sortingBy == 5 ? 'active' : ''" scope="col" class="column-email">
+                            <th [ngClass]="requestModel.sortingBy == 5 ? 'active' : ''" scope="col"
+                                class="column-email">
                                 Email
-                                <img *ngIf="requestModel.byAscending" (click)="onChangeSorting(5)" src="/assets/images/sorting-a-z-icon.png">
-                                <img *ngIf="!requestModel.byAscending" (click)="onChangeSorting(5)" src="/assets/images/sorting-z-a-icon.svg">
+                                <img *ngIf="requestModel.byAscending" (click)="onChangeSorting(5)"
+                                    src="/assets/images/sorting-a-z-icon.png">
+                                <img *ngIf="!requestModel.byAscending" (click)="onChangeSorting(5)"
+                                    src="/assets/images/sorting-z-a-icon.svg">
                             </th>
                             <th class="column-img" scope="col"></th>
                             <th class="column-img" scope="col"></th>
                         </tr>
                     </thead>
-                    
+
                     <tr class="table-rows" *ngFor="let customer of customers" id="table-row-{{customer.customerId}}">
                         <th (click)="redirect(customer.customerId)">{{customer.name}}</th>
                         <th (click)="redirect(customer.customerId)">{{customer.companyName}}</th>
                         <th (click)="redirect(customer.customerId)">{{customer.phone}}</th>
                         <th (click)="redirect(customer.customerId)">{{customer.email}}</th>
-                        <th (click)="redirect(customer.customerId)"><img src="/assets/images/edit-icon.svg" alt="edit-icon"></th>
+                        <th (click)="redirect(customer.customerId)"><img src="/assets/images/edit-icon.svg"
+                                alt="edit-icon"></th>
                         <th (click)="removeCustomer(customer.customerId)">
                             <img src="/assets/images/blue-delete-icon.svg" alt="remove-icon">
                         </th>

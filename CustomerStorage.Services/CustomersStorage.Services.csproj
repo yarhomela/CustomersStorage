@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CustomerStorage.DataAccessLayer\CustomerStorage.DataAccessLayer.csproj" />
-    <ProjectReference Include="..\CustomerStorage.ViewModels\CustomerStorage.ViewModels.csproj" />
+    <ProjectReference Include="..\CustomerStorage.DataAccessLayer\CustomersStorage.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\CustomerStorage.ViewModels\CustomersStorage.Models.csproj" />
   </ItemGroup>
 
 </Project>

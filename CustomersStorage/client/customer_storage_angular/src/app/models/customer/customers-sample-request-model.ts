@@ -1,6 +1,6 @@
 import { CustomerOrderSettingsEnum } from "../enums/customer-order-settings.enum";
 
-export interface IGetCustomersByFilterRequestModel {
+export interface CustomersSampleRequestModel {
     searchWord?: string;
     sortingBy: CustomerOrderSettingsEnum;
     byAscending: boolean;

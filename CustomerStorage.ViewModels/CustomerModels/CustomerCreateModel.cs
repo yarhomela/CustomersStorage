@@ -2,7 +2,7 @@
 
 namespace CustomerStorage.ViewModels.CustomerModels
 {
-    public class CreateCustomerViewModel
+    public class CustomerCreateModel
     {
         [Required(ErrorMessage = "Name - is required")]
         public string Name { get; set; }

@@ -2,7 +2,7 @@
 
 namespace CustomerStorage.ViewModels.CustomerModels
 {
-    public class UpdateCustomerViewModel
+    public class CustomerUpdateModel
     {
         [Required(ErrorMessage = "CustomerId - is required")]
         public int CustomerId { get; set; }

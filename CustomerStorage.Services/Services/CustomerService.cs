@@ -15,7 +15,7 @@ namespace CustomerStorage.Services.Services
             _customerRepository = customerRepository;
         }
 
-        public async Task AddAsync(CreateCustomerViewModel model)
+        public async Task AddAsync(CustomerCreateModel model)
         {
             Customer customer = model.MapCreateModelToEntity();
             await _customerRepository.CreateAsync(customer);
@@ -39,7 +39,7 @@ namespace CustomerStorage.Services.Services
             return customerList;
 
         }
-        public async Task UpdateAsync(UpdateCustomerViewModel model)
+        public async Task UpdateAsync(CustomerUpdateModel model)
         {
             Customer customer = model.MapUpdateModelToEntity();
             await _customerRepository.UpdateAsync(customer);
@@ -52,12 +52,12 @@ namespace CustomerStorage.Services.Services
         {
             await _customerRepository.DeleteAsync(customerId);
         }
-        public async Task<CustomerSampleViewModel> GetByFilter(GetCustomersByFilterRequestModel requestModel)
+        public async Task<CustomersSampleResponseModel> GetByFilter(CustomersSampleRequestModel requestModel)
         {
             var requestDto = requestModel.MapModelToRequestDto();
             var resultDto = await _customerRepository.GetCustomersByFiler(requestDto);
 
-            var responseModel = new CustomerSampleViewModel();
+            var responseModel = new CustomersSampleResponseModel();
             responseModel.PagesCount = resultDto.PagesCount;
 
             foreach (var customer in resultDto.Customers)

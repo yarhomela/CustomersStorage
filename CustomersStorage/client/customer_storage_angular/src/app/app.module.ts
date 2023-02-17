@@ -6,16 +6,16 @@ import { AppComponent } from './app.component';
 import { CustomerModule } from './components/customer/customer.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomerService } from './services/customer.service';
-import { HttpClientModule }   from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppHeaderComponent } from './app-header/app-header.component';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { LocalStorageHelper } from './cross-cutting/local-storage-helper';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppHeaderComponent,
-    ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

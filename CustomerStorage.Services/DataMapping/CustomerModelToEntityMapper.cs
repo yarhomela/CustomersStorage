@@ -6,7 +6,7 @@ namespace CustomerStorage.Services.DataMapping
 {
     public static class CustomerModelToEntityMapper
     {
-        public static Customer MapCreateModelToEntity(this CreateCustomerViewModel model)
+        public static Customer MapCreateModelToEntity(this CustomerCreateModel model)
         {
             var customer = new Customer()
             {
@@ -18,7 +18,7 @@ namespace CustomerStorage.Services.DataMapping
             return customer;
         }
 
-        public static Customer MapUpdateModelToEntity(this UpdateCustomerViewModel model)
+        public static Customer MapUpdateModelToEntity(this CustomerUpdateModel model)
         {
             var customer = new Customer()
             {
@@ -44,7 +44,7 @@ namespace CustomerStorage.Services.DataMapping
             return viewModel;
         }
 
-        public static CustomersByFilterRequestDTO MapModelToRequestDto(this GetCustomersByFilterRequestModel requestModel)
+        public static CustomersByFilterRequestDTO MapModelToRequestDto(this CustomersSampleRequestModel requestModel)
         {
             var requestDto = new CustomersByFilterRequestDTO()
             {

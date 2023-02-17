@@ -17,8 +17,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CustomersStorage.CrossCutting\CustomersStorage.CrossCutting.csproj" />
-    <ProjectReference Include="..\CustomerStorage.BusinessLogicLayer\CustomerStorage.BusinessLogicLayer.csproj" />
-    <ProjectReference Include="..\CustomerStorage.Services\CustomerStorage.Services.csproj" />
+    <ProjectReference Include="..\CustomerStorage.BusinessLogicLayer\CustomersStorage.BusinessLogicLayer.csproj" />
+    <ProjectReference Include="..\CustomerStorage.Services\CustomersStorage.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
