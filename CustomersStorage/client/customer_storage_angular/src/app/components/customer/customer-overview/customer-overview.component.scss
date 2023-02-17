@@ -32,6 +32,14 @@ button:hover {
 .customers-table thead{
   color: #4b82ff;
   font-size: larger;
+  img{
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.active img{
+  border: 3px solid #4b82ff;
 }
 
 .customers-table .table-rows:hover {background-color: #c1e6ff;}

@@ -64,6 +64,12 @@ export class CustomerOverviewComponent implements OnInit {
     }
   }
 
+  onChangeSorting(sortingBy: number): void{
+    requestModel.byAscending = !requestModel.byAscending;
+    requestModel.sortingBy = sortingBy;
+    this.getByFilter();
+  }
+
   redirect(customerId: any) {
     this.router.navigate(['/page/' + customerId]);
   }

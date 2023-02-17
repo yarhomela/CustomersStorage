@@ -20,11 +20,27 @@
             <div>
                 <table class="customers-table m-2">
                     <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Company Name</th>
-                            <th scope="col">Phone</th>
-                            <th scope="col">Email</th>
+                        <tr class="text-righ">
+                            <th [ngClass]="requestModel.sortingBy == 2 ? 'active' : ''" scope="col">
+                                Name
+                                <img *ngIf="requestModel.byAscending" (click)="onChangeSorting(2)" src="/assets/images/sorting-a-z-icon.png">
+                                <img *ngIf="!requestModel.byAscending" (click)="onChangeSorting(2)" src="/assets/images/sorting-z-a-icon.svg">
+                            </th>
+                            <th [ngClass]="requestModel.sortingBy == 3 ? 'active' : ''" scope="col">
+                                Company Name
+                                <img *ngIf="requestModel.byAscending" (click)="onChangeSorting(3)" src="/assets/images/sorting-a-z-icon.png">
+                                <img *ngIf="!requestModel.byAscending" (click)="onChangeSorting(3)" src="/assets/images/sorting-z-a-icon.svg">
+                            </th>
+                            <th [ngClass]="requestModel.sortingBy == 4 ? 'active' : ''" scope="col">
+                                Phone
+                                <img *ngIf="requestModel.byAscending" (click)="onChangeSorting(4)" src="/assets/images/sorting-a-z-icon.png">
+                                <img *ngIf="!requestModel.byAscending" (click)="onChangeSorting(4)" src="/assets/images/sorting-z-a-icon.svg">
+                            </th>
+                            <th [ngClass]="requestModel.sortingBy == 5 ? 'active' : ''" scope="col">
+                                Email
+                                <img *ngIf="requestModel.byAscending" (click)="onChangeSorting(5)" src="/assets/images/sorting-a-z-icon.png">
+                                <img *ngIf="!requestModel.byAscending" (click)="onChangeSorting(5)" src="/assets/images/sorting-z-a-icon.svg">
+                            </th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
@@ -56,8 +72,6 @@
                     </div>
                 </div>
             </div>
-
         </form>
-        
     </div>
 </div>
