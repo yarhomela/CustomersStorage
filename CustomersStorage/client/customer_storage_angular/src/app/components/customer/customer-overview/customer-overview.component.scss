@@ -66,5 +66,26 @@ button:hover {
     float: left;
     padding: 8px 16px;
   }
+  table{
+    width: 920px;
+    min-width: 940px;
+    .column-img{
+      width: 50px;
+    }
+
+  }
+
+  .column-name{
+    width: 160px !important;
+  }
+  .column-company{
+    width: 220px !important;
+  }
+  .column-phone{
+    width: 140px !important;
+  }
+  .column-email{
+    width: 300px !important;
+  }
   
   .pagination a:hover:not(.active) {background-color: #ddd;}

@@ -54,8 +54,10 @@
             </div>
     
             <div class="d-flex justify-content-center">
-                <button *ngIf="!isOpenForUpdate" [disabled]="customerForm.form.invalid || allNames?.indexOf(customerModel.name)! > -1" class="apply-btn m-2" type="button" (click)="addCustomer()">Add</button>
-                <button *ngIf="isOpenForUpdate" [disabled]="customerForm.form.invalid || allNames?.indexOf(customerModel.name)! > -1" class="apply-btn m-2" type="submit" (click)="editCustomer()">Update</button>
+                <button *ngIf="!isOpenForUpdate" [disabled]="customerForm.form.invalid || allNames.indexOf(customerModel.name)! > -1" 
+                    class="apply-btn m-2" type="button" (click)="addCustomer()">Add</button>
+                <button *ngIf="isOpenForUpdate" [disabled]="customerForm.form.invalid || allNames.indexOf(customerModel.name)! > -1" 
+                    class="apply-btn m-2" type="submit" (click)="editCustomer()">Update</button>
             </div>
 
         </form>
