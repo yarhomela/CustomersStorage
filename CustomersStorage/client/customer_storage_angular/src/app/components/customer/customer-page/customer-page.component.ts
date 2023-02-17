@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageHelper } from 'src/app/cross-cutting/local-storage-helper';
 import { customerModel, customersListName } from 'src/app/models/constants';
