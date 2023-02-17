@@ -15,7 +15,7 @@
             <label class="m-2" for="customer-name">Name:</label>
             <input class="m-2" type="text" name="name" [(ngModel)]="customer.name" #name="ngModel" required>
             <div *ngIf="name?.dirty" class="validation">
-                <div *ngIf="allNames?.indexOf(customer.name) > -1">
+                <div *ngIf="allNames !=null && allNames?.indexOf(customer.name) > -1">
                     <span>Name already exist. Please enter unique Name</span>
                 </div>
                 <div *ngIf="customer.name == ''">
