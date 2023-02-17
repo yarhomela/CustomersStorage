@@ -6,7 +6,6 @@ using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Data;
-using System.Reflection.PortableExecutable;
 
 namespace CustomerStorage.DataAccessLayer.Repositories
 {
@@ -95,6 +94,15 @@ namespace CustomerStorage.DataAccessLayer.Repositories
             {
                 throw new DbUpdateConcurrencyException(ex.Message);
             }
+        }
+
+        public async Task<List<string>> GetAllCustomersNames()
+        {
+            var allCustomersNames = await _context.Customers
+                .AsNoTracking()
+                .Select(x => x.Name)
+                .ToListAsync();
+            return allCustomersNames;
         }
     }
 }

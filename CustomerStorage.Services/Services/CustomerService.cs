@@ -67,5 +67,10 @@ namespace CustomerStorage.Services.Services
             };
             return responseModel;
         }
+        public async Task<List<string>> GetAllCustomersNames()
+        {
+            var customerList = await _customerRepository.GetAllCustomersNames();
+            return customerList;
+        }
     }
 }

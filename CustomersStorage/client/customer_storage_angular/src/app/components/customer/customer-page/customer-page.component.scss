@@ -4,6 +4,23 @@
     border: 2px solid #4b82ff;
     width: 70px;
   }
+  label{
+    font-size: 22px;
+    font-style: bold;
+  }
+
+  .inputs input{
+    width: 250px;
+    font-size: 18px;
+    font-style: italic;
+  }
+
+  .validation span{
+    font-size: 16px;
+    color: red;
+    margin-left: 8px;
+  }
+
 
 button:hover {
     background-color: #c1e6ff;

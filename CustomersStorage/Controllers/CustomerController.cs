@@ -69,5 +69,12 @@ namespace CustomersStorage.Controllers
             await _customerService.RemoveAsync(customerId);
             return Ok();
         }
+
+        [HttpGet("GetAllNames")]
+        public async Task<IActionResult> GetAllNames()
+        {
+            var allNames = await _customerService.GetAllCustomersNames();
+            return Ok(allNames);
+        }
     }
 }

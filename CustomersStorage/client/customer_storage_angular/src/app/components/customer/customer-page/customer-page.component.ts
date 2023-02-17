@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LocalStorageHelper } from 'src/app/cross-cutting/local-storage-helper';
@@ -17,14 +18,9 @@ import { CustomerService } from 'src/app/services/customer.service';
 export class CustomerPageComponent implements OnInit {
     customer: CustomerViewModel;
     customerId: number = 0;
-
-    // const user: User = {
-    //     name: string;
-    // }
-    // const user = {
-    //     name: string;
-    //     password: string;
-    // } as CustomerViewModel
+    isUpdate: boolean = false;
+    allNames: any;
+    isValid: boolean = true;
 
     constructor(private customerService : CustomerService, 
         private route: ActivatedRoute,
@@ -35,12 +31,18 @@ export class CustomerPageComponent implements OnInit {
             this.customerId = params['id'];
           });
         routeSub.unsubscribe();
-        if(this.customerId > 0){
+        this.isUpdate = this.customerId > 0;
+        debugger
+        if(this.isUpdate){
             let customerList = localStorageHelper.getFromLocalStorage('customerList') as CustomerViewModel[];
             let customer = customerList.find(f => f.customerId == this.customerId);
             this.customer = customer!;
         }
-        
+        if(!this.isUpdate){
+          this.customerService.getAllNames().subscribe((response: any) => {
+            this.allNames = response;
+          });
+        }
     }
 
     ngOnInit() {
@@ -48,7 +50,10 @@ export class CustomerPageComponent implements OnInit {
     }
 
     addCustomer(){
-        this.customerService.add(this.customer);
+        this.customerService.add(this.customer).subscribe(
+          res => {
+            this.router.navigate(['../overview']);
+        });
     }
 
     getCustomer(){
@@ -68,7 +73,6 @@ export class CustomerPageComponent implements OnInit {
     removeCustomer(customerId: any) {
         this.customerService.remove(customerId).subscribe(
           res => {
-            debugger
             this.router.navigate(['../overview']);
         });
       }

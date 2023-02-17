@@ -11,5 +11,6 @@ namespace CustomerStorage.Services.Services.Interfaces
         Task RemoveAsync(int customerId);
         Task TrancateAsync(int customerId);
         Task<CustomerSampleViewModel> GetByFilter(GetCustomersByFilterRequestModel requestModel);
+        Task<List<string>> GetAllCustomersNames();
     }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CreateCustomerViewModel } from '../models/customer/create-customer-view-model';
@@ -50,5 +50,12 @@ export class CustomerService {
     remove(id: number) {
         let url = this.baseUrl + "/Customer/Remove/" + id;
         return this.http.get(url);
+    }
+
+    getAllNames(){
+        let url = this.baseUrl + "/Customer/GetAllNames";
+        return this.http.get(url).pipe(map((response: any) => {
+            return response;
+        }));
     }
 }

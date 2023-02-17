@@ -14,5 +14,6 @@ namespace CustomerStorage.DataAccessLayer.Repositories.Interfaces
         Task SetIsRemovedAsync(int entityId);
         Task DeleteAsync(int customerId);
         Task<CustomerSampleDTO> GetCustomersByFiler(CustomersByFilterRequestDTO request);
+        Task<List<string>> GetAllCustomersNames();
     }
 }
