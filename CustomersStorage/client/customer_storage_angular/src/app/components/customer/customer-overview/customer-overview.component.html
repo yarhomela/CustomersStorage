@@ -45,10 +45,9 @@
             <div>
                 <div class="d-flex justify-content-between">
                     <div class="pagination">
-                        <a (click)="onChangePage(activePage - 1)">&laquo;</a>
-                        <a [ngClass]="activePage == 1 ? 'active' : ''" (click)="onChangePage(1)">1</a>
-                        <a *ngFor="let page of pages" (click)="onChangePage(page)" [ngClass]="activePage == page ? 'active' : ''">{{page}}</a>
-                        <a (click)="onChangePage(activePage+1)">&raquo;</a>
+                        <label>Page {{requestModel.page}} of {{pagesCount}}</label>
+                        <a (click)="onPageBack()">&laquo;</a>
+                        <a (click)="onPageNext()">&raquo;</a>
                     </div>
                     <div>
                         <button (click)="redirect(0)">

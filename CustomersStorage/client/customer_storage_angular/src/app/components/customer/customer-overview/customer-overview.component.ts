@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { LocalStorageHelper } from 'src/app/cross-cutting/local-storage-helper';
 import { CustomerViewModel } from 'src/app/models/customer/customer-view-model';
-import { GetCustomersByFilterRequestModel } from 'src/app/models/customer/get-customer-by-filter-request-model';
+import { IGetCustomersByFilterRequestModel } from 'src/app/models/customer/get-customer-by-filter-request-model';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
@@ -16,10 +16,8 @@ import { DOCUMENT } from '@angular/common';
 export class CustomerOverviewComponent implements OnInit {
   private customerListName: string = 'customerList';
   customers: CustomerViewModel[] = [];
-  pages: Array<number> = [];
   pagesCount: number = 1;
-  activePage: number = 1;
-  requestModel: GetCustomersByFilterRequestModel = new GetCustomersByFilterRequestModel();
+  requestModel: any = requestModel;
 
   constructor(private customerService: CustomerService,
     private localStorageHelper: LocalStorageHelper,
@@ -30,14 +28,11 @@ export class CustomerOverviewComponent implements OnInit {
     //let storedData = this.localStorageHelper.getFromLocalStorage(this.customerListName);
     //let isNeedRefresh = storedData == null;
     this.getByFilter();
-    for (let i = 2; i <= this.pagesCount; i++) {
-      this.pages.push(i);
-    }
 
   }
 
   getByFilter() {
-    this.customerService.getListByFilter(this.requestModel).subscribe((response: any) => {
+    this.customerService.getListByFilter(requestModel).subscribe((response: any) => {
       this.customers = response.customers;
       this.pagesCount = response.pagesCount;
       this.localStorageHelper.setOnLocalStorage(this.customerListName, response.customers);
@@ -53,12 +48,31 @@ export class CustomerOverviewComponent implements OnInit {
       });
   }
 
-  onChangePage(page: number) {
-    this.requestModel.page = page;
-    this.getByFilter();
+  onPageNext(): void {
+    let isLastPage = requestModel.page == this.pagesCount;
+    if(!isLastPage){
+      ++requestModel.page
+      this.getByFilter();
+    }
+  }
+
+  onPageBack(): void {
+    let isFirstPage = requestModel.page == 1;
+    if(!isFirstPage){
+      --requestModel.page;
+      this.getByFilter();
+    }
   }
 
   redirect(customerId: any) {
     this.router.navigate(['/page/' + customerId]);
   }
 }
+
+const requestModel = {
+  searchWord: '',
+  sortingBy: 2,
+  byAscending: true,
+  page: 1,
+  pageSize: 10,
+} as IGetCustomersByFilterRequestModel
