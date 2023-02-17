@@ -1,10 +1,6 @@
-import { CustomerViewModel } from "./customer-view-model";
+import { ICustomerViewModel } from "./customer-view-model";
 
-export class CustomerSampleViewModel{
-    customers : CustomerViewModel[];
-    pagesCount? : number;
-
-    constructor(){
-        this.customers = [];
-    }
+export interface ICustomerSampleViewModel{
+    customers : ICustomerViewModel[];
+    pagesCount : number;
 }

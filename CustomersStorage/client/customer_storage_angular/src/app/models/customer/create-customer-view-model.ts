@@ -1,6 +1,6 @@
-export class CreateCustomerViewModel {
-    name?: string;
-    companyName?: string;
-    phone?: string;
-    email?: string;
+export interface ICreateCustomerViewModel {
+    name: string;
+    companyName: string;
+    phone: string;
+    email: string;
 }

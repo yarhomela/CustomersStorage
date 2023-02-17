@@ -1,10 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { LocalStorageHelper } from 'src/app/cross-cutting/local-storage-helper';
-import { CustomerViewModel } from 'src/app/models/customer/customer-view-model';
+import { ICustomerViewModel } from 'src/app/models/customer/customer-view-model';
 import { IGetCustomersByFilterRequestModel } from 'src/app/models/customer/get-customer-by-filter-request-model';
 import { CustomerService } from 'src/app/services/customer.service';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+import { ICustomerSampleViewModel } from 'src/app/models/customer/customer-sample-view-model';
+import { customersListName, customersRequestModel } from 'src/app/models/constants';
 
 @Component({
   selector: 'app-customer-overview',
@@ -14,32 +16,30 @@ import { DOCUMENT } from '@angular/common';
 })
 
 export class CustomerOverviewComponent implements OnInit {
-  private customerListName: string = 'customerList';
-  customers: CustomerViewModel[] = [];
-  pagesCount: number = 1;
-  requestModel: any = requestModel;
+  customers: ICustomerViewModel[] = [];
+  pagesCount: number = 0;
+  requestModel: IGetCustomersByFilterRequestModel;
 
   constructor(private customerService: CustomerService,
     private localStorageHelper: LocalStorageHelper,
     private router: Router,
-    @Inject(DOCUMENT) private document: Document) { }
+    @Inject(DOCUMENT) private document: Document) {
+      this.requestModel = customersRequestModel;
+     }
 
   ngOnInit() {
-    //let storedData = this.localStorageHelper.getFromLocalStorage(this.customerListName);
-    //let isNeedRefresh = storedData == null;
     this.getByFilter();
-
   }
 
-  getByFilter() {
-    this.customerService.getListByFilter(requestModel).subscribe((response: any) => {
-      this.customers = response.customers;
-      this.pagesCount = response.pagesCount;
-      this.localStorageHelper.setOnLocalStorage(this.customerListName, response.customers);
+  getByFilter(): void {
+    this.customerService.getListByFilter(this.requestModel).subscribe((customersViewModel: ICustomerSampleViewModel) => {
+      this.customers = customersViewModel.customers;
+      this.pagesCount = customersViewModel.pagesCount;
+      this.localStorageHelper.setOnLocalStorage(customersListName, customersViewModel.customers);
     });
   }
 
-  removeCustomer(customerId: any) {
+  removeCustomer(customerId: number): void {
     this.customerService.remove(customerId).subscribe(
       res => {
         let elementId = "table-row-" + customerId;
@@ -49,36 +49,28 @@ export class CustomerOverviewComponent implements OnInit {
   }
 
   onPageNext(): void {
-    let isLastPage = requestModel.page == this.pagesCount;
+    let isLastPage = this.requestModel.page == this.pagesCount;
     if(!isLastPage){
-      ++requestModel.page
+      ++this.requestModel.page
       this.getByFilter();
     }
   }
 
   onPageBack(): void {
-    let isFirstPage = requestModel.page == 1;
+    let isFirstPage = this.requestModel.page == 1;
     if(!isFirstPage){
-      --requestModel.page;
+      --this.requestModel.page;
       this.getByFilter();
     }
   }
 
   onChangeSorting(sortingBy: number): void{
-    requestModel.byAscending = !requestModel.byAscending;
-    requestModel.sortingBy = sortingBy;
+    this.requestModel.byAscending = !this.requestModel.byAscending;
+    this.requestModel.sortingBy = sortingBy;
     this.getByFilter();
   }
 
-  redirect(customerId: any) {
+  redirect(customerId: number) {
     this.router.navigate(['/page/' + customerId]);
   }
 }
-
-const requestModel = {
-  searchWord: '',
-  sortingBy: 2,
-  byAscending: true,
-  page: 1,
-  pageSize: 10,
-} as IGetCustomersByFilterRequestModel
