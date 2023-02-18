@@ -41,7 +41,7 @@ export class CustomerService {
 
     getAllNames(): Observable<string[]> {
         let url = this.baseUrl + "/Customer/GetAllNames";
-        return this.http.get(url).pipe(map((item: any) => {
+        return this.http.get(url).pipe(map((item: any): string[] => {
             return item;
         }));
     }

@@ -37,11 +37,8 @@ export class CustomerPageComponent implements OnInit {
       let customer = customerList.find(f => f.customerId == this.customerModel.customerId);
       this.customerModel = customer!;
     }
-    if (!this.isOpenForUpdate) {
-      this.customerService.getAllNames().subscribe((response: any) => {
-        this.allNames = response;
-      });
-    }
+
+    this.getAllCustomerNames();
   }
 
   getCustomerId(): void {
@@ -49,6 +46,16 @@ export class CustomerPageComponent implements OnInit {
       this.customerModel.customerId = params['id'];
     });
     routeSub.unsubscribe();
+  }
+
+  getAllCustomerNames(): void{
+    this.customerService.getAllNames().subscribe(data => {
+      this.allNames = data;
+      debugger
+      let index = this.allNames.indexOf(this.customerModel.name, 0);
+      if (this.isOpenForUpdate && index > -1) {
+        this.allNames.splice(index, 1);
+      }});
   }
 
   addCustomer(): void {
